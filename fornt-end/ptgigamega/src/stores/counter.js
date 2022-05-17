@@ -12,6 +12,7 @@ export const useCounterStore = defineStore({
   },
   actions: {
     isloginAction(payload) {
+      console.log("payload: ", payload);
       this.isLogin = payload
     },
     registAction(payload) {
@@ -28,7 +29,7 @@ export const useCounterStore = defineStore({
       password: payload.password,
       });
     },
-    async getBooks(payload){
+    async getBooks(payload) {
       try {
         const data = await axios.get("/books",{
           headers:{
@@ -40,6 +41,19 @@ export const useCounterStore = defineStore({
           }
         })
         this.books= data.data.data
+      } catch (error) {
+        console.log("error: ", error);
+        
+      }
+    },
+    async deleteBook(id) {
+      try {
+        const data = await axios.delete(`/books/${id}`,{
+          headers:{
+            Authorization: localStorage.getItem("token")
+          }
+        })
+        this.getBooks()
       } catch (error) {
         console.log("error: ", error);
         
