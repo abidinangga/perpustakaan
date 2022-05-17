@@ -31,7 +31,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/editBook',
+      path: '/formEdit',
       name: 'formEdit',
       component: formEdit,
       beforeEnter:(to,from,next)=>{

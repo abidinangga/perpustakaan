@@ -5,14 +5,20 @@ export const useCounterStore = defineStore({
   state: () => ({
     isLogin: false,
     books:[],
-
+    dataEdit:{
+      author: "",
+      publisher: "",
+      title: "",
+      isbn: "",
+      description: "",
+    },
+    newData:[],
   }),
   getters: {
   
   },
   actions: {
     isloginAction(payload) {
-      console.log("payload: ", payload);
       this.isLogin = payload
     },
     registAction(payload) {
@@ -70,6 +76,47 @@ export const useCounterStore = defineStore({
       } catch (error) {
         console.log("error: ", error);
         
+      }
+    },
+    async editDataBook(payload) {
+      console.log("payload: ", payload);
+      try{
+        const data = await axios.put(`/books`,{
+          id: payload.id,
+          author: payload.author,
+          publisher: payload.publisher,
+          title: payload.title,
+          isbn: payload.isbn,
+          description: payload.description,
+        },{
+          headers:{
+            Authorization: localStorage.getItem("token")
+          }
+        })
+        this.newData= data.data.data
+      }
+      catch(error){
+        console.log("error: ", error);
+      }
+    },
+    async getDataById(id) {
+      console.log(id,"idaction");
+      try{
+        const data = await axios.get(`/books/findbyid/${id}`,{
+          headers:{
+            Authorization: localStorage.getItem("token")
+          }
+        })
+        this.dataEdit= {
+          author: data.data.data.author,
+          publisher: data.data.data.publisher,
+          title:data.data.data.title ,
+          isbn:data.data.data.isbn ,
+          description: data.data.data.description,
+        }
+      }
+      catch(error){
+        console.log("error: ", error);
       }
     }
   }

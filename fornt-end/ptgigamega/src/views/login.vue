@@ -79,7 +79,6 @@ methods: {
         username: this.username,
         password: this.password,
       });
-      console.log(data.data.message);
       this.isloginAction("true")
       localStorage.setItem("token", data.data.data.token);
       this.$router.push("/home");

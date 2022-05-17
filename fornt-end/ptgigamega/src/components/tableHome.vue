@@ -18,12 +18,13 @@ export default {
 name:"tableHome",
 props:["book","index"],
 methods:{
-    ... mapActions(useCounterStore,["deleteBook","editBook"]),
+    ... mapActions(useCounterStore,["deleteBook","getDataById"]),
     removeBook(id){
         this.deleteBook(id)
     },
     editBook(id){
-        this.editBook(id)
+        this.getDataById(id)
+        this.$router.push('/formEdit')
     }
 }
 }

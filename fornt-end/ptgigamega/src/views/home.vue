@@ -1,6 +1,7 @@
 <template>
   <div class="table w-full p-2">
-    <router-link to="/addBook"> Add Book</router-link>
+    <router-link to="/addBook">Add Book</router-link>
+    <button @click.prevent="logout">Logout</button>
         <table class="w-full border">
             <thead>
                 <tr class="bg-gray-50 border-b">
@@ -77,6 +78,11 @@ components:{
 },
 methods:{
   ...mapActions(useCounterStore,["getBooks"]),
+   logout() {
+      localStorage.removeItem("token");
+      this.isloginAction(false);
+      this.$router.push("/");
+    },
 },
 computed:{
   ...mapState(useCounterStore,["books"])
