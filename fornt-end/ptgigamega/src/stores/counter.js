@@ -29,6 +29,19 @@ export const useCounterStore = defineStore({
       password: payload.password,
       });
     },
+    addBook(payload){
+      return axios.post("/books",{
+        author: payload.author,
+        description: payload.description,
+        title: payload.title,
+        isbn: payload.isbn,
+        publisher: payload.publisher,
+      },{
+        headers: {
+          Authorization: localStorage.getItem("token")
+      },
+    })
+    },
     async getBooks(payload) {
       try {
         const data = await axios.get("/books",{

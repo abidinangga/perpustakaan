@@ -56,7 +56,6 @@
             class="px-4 py-1.5 rounded-md shadow-lg bg-sky-600 font-medium text-gray-100 block hover:bg-sky-700 transition duration-300"
             type="submit"
         >
-            <span id="login_process_state" class="hidden">Checking ...</span>
             <span id="login_default_state">Create Account</span>
         </button>
         </form>
@@ -90,7 +89,6 @@ methods: {
         address: this.address,
         password: this.password,
         });
-        console.log(data);
         this.$router.push("/");
     } catch (error) {
         console.log("error: ", error);
