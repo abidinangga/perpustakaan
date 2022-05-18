@@ -82,8 +82,25 @@ methods: {
         password: this.password,
         });
         this.$router.push("/");
+        this.$swal({
+        title: `Success Register`,
+        showClass: {
+            popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+        },
+        });
     } catch (error) {
-        console.log("error: ", error);
+        this.$swal({
+        title: `Failed register`,
+        showClass: {
+            popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+        },
+        });
     }
     },
 },

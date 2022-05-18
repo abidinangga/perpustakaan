@@ -38,15 +38,13 @@
           </button>
         </form>
         <div>
-          <p class="flex items-center justify-center text-2 ">
-             belum punya akun? 
-          </p>
+          <p class="flex items-center justify-center text-2">belum punya akun?</p>
           <button
             class="px-4 py-1.5 w-full rounded-md shadow-lg bg-sky-600 font-medium text-gray-100 block hover:bg-sky-700 transition duration-300"
           >
-          <router-link to="/register" class="text-sm font-medium text-black-600"
-            >Register</router-link
-          >
+            <router-link to="/register" class="text-sm font-medium text-black-600"
+              >Register</router-link
+            >
           </button>
         </div>
       </div>
@@ -76,8 +74,20 @@ export default {
         this.isloginAction("true");
         localStorage.setItem("token", data.data.data.token);
         this.$router.push("/home");
+        this.$swal({
+          title: `Success Login ${this.username}`,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
       } catch (error) {
-        console.log(error);
+        this.$swal({
+          icon: "error",
+          title: "username or password wrong! ",
+        });
       }
     },
   },
