@@ -10,26 +10,25 @@
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
               <div class="md:col-span-5" >
                 <label for="author">Author</label>
-                <input type="text" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" v-model="author">
+                <input type="text" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" v-model="dataEdit.author" />
               </div>
               <div class="md:col-span-5">
                 <label for="publisher">Publisher</label>
-                <input type="text" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" v-model="publisher" >
+                <input type="text" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" v-model="dataEdit.publisher" >
               </div>
 
               <div class="md:col-span-3">
                 <label for="title">Title</label>
-                <input type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" v-model="title" >
+                <input type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" v-model="dataEdit.title" >
               </div>
 
               <div class="md:col-span-2">
                 <label for="isbn">ISBN</label>
-                <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" v-model="isbn" >
+                <input  type="text"  class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" v-model="dataEdit.isbn" >
               </div>
-
               <div class="md:col-span-5">
                 <label for="country">Description</label>
-                  <textarea v-model="description" cols="30" rows="10" class="border mt-1 rounded bg-gray-50 px-4 w-full"></textarea>
+                  <textarea v-model="dataEdit.description" cols="30" rows="10" class="border mt-1 rounded bg-gray-50 px-4 w-full"></textarea>
               </div>
               <div class="md:col-span-5 text-right">
                 <div class="inline-flex items-end">
@@ -38,9 +37,6 @@
                 <div class="inline-flex items-end">
                   <button @click.prevent="submitEdit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
                 </div>
-                <p>{{dataEdit.id}}</p>
-                <p>{{dataEdit.title}}</p>
-                <p>{{dataEdit.isbn}}</p>
               </div>
             </div>
           </div>
@@ -55,27 +51,13 @@ import { useCounterStore } from "@/stores/counter.js";
 export default {
 name:"dataEdit",
 props:["dataEdit"],
-data () {
-  return{
-    author: "",
-    publisher: "",
-    title: "",
-    isbn: "",
-    description: "",
-  }
-},
 methods:{
   ...mapActions(useCounterStore,["editDataBook"]),
   async submitEdit(){
     try {
-      const data = await this.editDataBook({
-        id: this.dataEdit.id,
-        author: this.author,
-        publisher: this.publisher,
-        title: this.title,
-        isbn: this.isbn,
-        description: this.description,
-      })
+      const data = await this.editDataBook(
+       this.dataEdit
+      )
       this.$router.push('/home')
     } catch (error) {
       console.log("error: ", error);

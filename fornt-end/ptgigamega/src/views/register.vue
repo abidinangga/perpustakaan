@@ -1,16 +1,8 @@
 <template>
-  <div class="bg-gradient-to-tr from-sky-200 to-sky-500">
+  <div class="bg-gradient-to-tr from-sky-400 to-sky-600">
     <section class="p-4 flex flex-col justify-center min-h-screen max-w-md mx-auto">
-    <div class="p-6 bg-sky-100 rounded">
+    <div class="p-6 rounded">
         <div class="flex items-center justify-center text-4xl font-black text-sky-900 m-3">
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="mr-3 w-10 h-10"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-        >
-            <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
-        </svg>
         <h1 class="tracking-wide">Perpustakaan<span class="font-mono"></span></h1>
         </div>
         <form

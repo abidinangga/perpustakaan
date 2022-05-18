@@ -1,16 +1,8 @@
 <template>
-  <div class="bg-gradient-to-tr from-sky-200 to-sky-500">
+  <div class="bg-gradient-to-tr from-sky-400 to-sky-600">
     <section id="login" class="p-4 flex flex-col justify-center min-h-screen max-w-md mx-auto">
-      <div class="p-6 bg-sky-100 rounded">
+      <div class="p-6 bg-sky rounded">
         <div class="flex items-center justify-center text-4xl font-black text-sky-900 m-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="mr-3 w-10 h-10"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
-          </svg>
           <h1 class="tracking-wide">Perpustakaan<span class="font-mono"></span></h1>
         </div>
         <form
@@ -46,12 +38,16 @@
           </button>
         </form>
         <div>
-          <p class="text-sm text-gray-600">
-            <a href="#" class="text-sky-500 hover:text-sky-700"> belum punya akun? </a>
+          <p class="flex items-center justify-center text-2 ">
+             belum punya akun? 
           </p>
-          <router-link to="/register" class="text-sm font-medium text-sky-500 hover:text-sky-600"
+          <button
+            class="px-4 py-1.5 w-full rounded-md shadow-lg bg-sky-600 font-medium text-gray-100 block hover:bg-sky-700 transition duration-300"
+          >
+          <router-link to="/register" class="text-sm font-medium text-black-600"
             >Register</router-link
           >
+          </button>
         </div>
       </div>
     </section>
