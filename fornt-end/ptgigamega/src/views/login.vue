@@ -47,9 +47,7 @@
         </form>
         <div>
           <p class="text-sm text-gray-600">
-            <a href="#" class="text-sky-500 hover:text-sky-700">
-            belum punya akun?
-            </a>
+            <a href="#" class="text-sky-500 hover:text-sky-700"> belum punya akun? </a>
           </p>
           <router-link to="/register" class="text-sm font-medium text-sky-500 hover:text-sky-600"
             >Register</router-link
@@ -64,32 +62,30 @@
 import { mapActions } from "pinia";
 import { useCounterStore } from "@/stores/counter.js";
 export default {
-name:"login",
-data() {
-  return {
-    username: "",
-    password: "",
-  };
-},
-methods: {
-  ...mapActions(useCounterStore,["loginAction","isloginAction"]),
-  async submitLogin(){
-    try {
-      const data = await this.loginAction({
-        username: this.username,
-        password: this.password,
-      });
-      this.isloginAction("true")
-      localStorage.setItem("token", data.data.data.token);
-      this.$router.push("/home");
-    } catch (error) {
-      console.log(error); 
-    }
-  }
-},
-}
+  name: "login",
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    ...mapActions(useCounterStore, ["loginAction", "isloginAction"]),
+    async submitLogin() {
+      try {
+        const data = await this.loginAction({
+          username: this.username,
+          password: this.password,
+        });
+        this.isloginAction("true");
+        localStorage.setItem("token", data.data.data.token);
+        this.$router.push("/home");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
